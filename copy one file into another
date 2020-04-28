@@ -1,0 +1,40 @@
+    #include <stdio.h>
+    #include <conio.h>
+    #include <stdlib.h>
+     
+    void copy(FILE *source, FILE *target)
+    {
+    	char ch;
+    	system("cd D:");
+    	if(source != NULL)
+    	{
+    		while((ch=fgetc(source))!=EOF)
+    		{
+    			fputc(ch,target);
+    		}
+    		fclose(source);
+    		fclose(target);
+    		printf("Copied successfully...\n");
+    	}
+    	else
+    	{
+    		fclose(source);
+    		fclose(target);
+    		printf("Press any key to exit...\n");
+    	}
+    	
+    }
+     
+    int main()
+    {
+    	char s[80], t[80];
+    	printf("Enter the source file: ");
+    	scanf("%s",s);
+    	printf("\nEnter the target file: ");
+    	scanf("%s",t);
+    	FILE *source = fopen(s,"r+");
+    	FILE *target = fopen(t,"a+");
+    	copy(source, target);
+    	getch();
+    	return 0;
+    }
